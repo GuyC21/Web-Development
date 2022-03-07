@@ -1,0 +1,91 @@
+<html>
+    <head>
+
+        <title>Javascript Reaction Tester</title>
+
+    </head>
+
+    <style>
+
+        .center {
+            text-align: center;
+            margin: auto;
+            margin-top: 5%;
+        }
+
+        #shape {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background-color: red;
+            display: none;
+            position: relative;
+        }
+
+    </style>
+
+    <body>
+
+        <div class="center">
+            <h1>Reaction Tester</h1>
+            <h2>Click on whatever appears as quick as you can</h2>
+            <h3>Your time: <span id="timeTaken"></span></h3>
+            <div id = "shape"></div>
+        </div>
+        
+        <script type ="text/javascript">
+            
+            //Declaring Global Variables
+            var startTime = new Date().getTime();
+            var duration;
+            var endTime;
+            var num;
+            var colors = ["yellow","black","green","red"];
+            
+            //creating random numbers in regards to a specific "position"
+            function createRandom(str) {
+                str = str.toLowerCase();
+                if (str == 'top') {
+                    num = Math.random() * 450;
+                }
+                if (str == 'left') {
+                    num = Math.random() * 1600;
+                }
+                if (str == 'size') {
+                    num = Math.floor(Math.random() * 200) + 50;
+                }
+                return(num);
+            }
+
+            //delay the shape appearance by X seconds and randomize sizes and placement
+            function makeShapeAppear(){
+                var squareSize = createRandom('Size');
+                document.getElementById("shape").style.width = squareSize + "px";
+                document.getElementById("shape").style.height = squareSize + "px";
+                document.getElementById("shape").style.top = createRandom('Top') + "px";
+                document.getElementById("shape").style.left = createRandom('Left') + "px";
+                document.getElementById("shape").style.display = "block";
+                startTime = new Date().getTime();
+            }
+
+            //make the square to appear in after random times (between 0 to 2 seconds)
+            function appearAfterDelay () {
+                const shapeTimeout = setTimeout(makeShapeAppear, Math.random() * 6000);
+            }
+
+            appearAfterDelay();
+
+            //records the time it took to press the shape and shows it
+            document.getElementById("shape").onclick = function() {
+                endTime = new Date().getTime();
+                document.getElementById("shape").style.display = 'none';
+                duration = (endTime - startTime)/1000;
+                document.getElementById("timeTaken").textContent = duration + " Seconds";
+                appearAfterDelay();
+            }
+
+        </script>
+
+    </body>
+
+</html>

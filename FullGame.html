@@ -1,0 +1,111 @@
+<html>
+    <head>
+
+        <title>Reaction Tester</title>
+
+    </head>
+
+    <style>
+
+        .center {
+            text-align: center;
+            margin: auto;
+            margin-top: 9%;
+        }
+
+        #choosingGame {
+            text-align: center;
+            margin: auto;
+            margin-top: 9%;
+        }
+        
+        #startMoovingGame {
+            display: none;
+            margin: auto;
+            width: 100%;
+            height: 100%;
+            border: 0px;
+        }
+
+        #startStaticGame {
+            display: none;
+            margin: auto;
+            width: 100%;
+            height: 100%;
+            border: 0px;
+        }
+
+        #shape {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background-color: red;
+            display: none;
+            position: relative;
+        }
+
+        #chooseMovingTester {
+            width: 200px;
+            height: 200px;
+            border:6px;
+            border-style: solid;
+            position: fixed;
+            top: 30%;
+            left: 39%;
+            background-color: red;
+            display:grid;
+            place-items:center;
+        }
+
+        #chooseStaticTester {
+            width: 200px;
+            height: 200px;
+            border:6px;
+            border-style: solid;
+            position: fixed;
+            top: 30%;
+            left: 51%;
+            background-color: red;
+            display:grid;
+            place-items:center;
+        }
+
+    </style>
+
+    <body>
+
+        <div id = 'choosingGame'>
+            <h1>Choose between a moving reaction test or a steady one</h1>
+            <h2>Be mindful - the game only works on desktops with at least 1080p resolution</h2>
+        </div>
+        <div id="chooseMovingTester">
+            <p style = "font-size:18px"><strong>Moving Reaction Tester</strong></p>
+        </div>
+        <div id="chooseStaticTester">
+            <p style = "font-size:18px"><strong>Static Reaction Tester</strong></p>
+        </div>
+        <!-- iframe for storing and hiding the mooving game-->
+        <iframe id="startMoovingGame" src="MoovingReactionTester.html"></iframe>
+        <!-- iframe to storing and hiding the mooving game-->
+        <iframe id="startStaticGame" src="StaticReactionTester.html"></iframe>
+        
+
+        <script type ="text/javascript">
+            //pressing 'chooseMovingTester' -> triggering that game
+            document.getElementById("chooseMovingTester").onclick = function(){
+                document.getElementById("chooseMovingTester").style.display = 'none';
+                document.getElementById("chooseStaticTester").style.display = 'none';
+                document.getElementById("choosingGame").style.display = 'none';
+                document.getElementById("startMoovingGame").style.display = 'block';
+            }
+            //pressing 'chooseStaticTester' -> triggering that game
+            document.getElementById("chooseStaticTester").onclick = function(){
+                document.getElementById("chooseMovingTester").style.display = 'none';
+                document.getElementById("chooseStaticTester").style.display = 'none';
+                document.getElementById("choosingGame").style.display = 'none';
+                document.getElementById("startStaticGame").style.display = 'block';
+            }
+        </script>
+
+    </body>
+</html>
