@@ -141,6 +141,8 @@
                 $("#outputContainer").contents().find("html").html(
                 "<html><head><style type='text/css'>" + $("#cssContainer").val() + "</style></head><body>" + $("#htmlContainer").val());
             }
+            updateOutput();
+            document.getElementById("outputContainer").contentWindow.eval($("#jsContainer").val());
 
             //make HTML and CSS textareas binded to output iFrame
             $("textarea").on('change keyup paste', function () {
